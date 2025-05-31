@@ -76,36 +76,105 @@
   </style>
 </head>
 <body class="min-h-screen px-6 py-10 md:px-24 md:py-16">
-  <h1 class="text-3xl font-bold glow mb-4">Kapitel 1 – Perfektioniert</h1>
-  <p class="text-cyan-300 mb-8">Dies ist ein Beispielkapitel aus MONDFALL. Interaktive Inhalte und ein lokales Gästebuch sind enthalten.</p>
-  <section id="feedback">
-    <h2 class="text-xl font-semibold mb-4 text-cyan-400">📡 Gästebuch & Rückmeldung</h2>
-    <form onsubmit="submitMessage(event)">
-      <input id="guestName" type="text" placeholder="Name oder Rufzeichen" class="form-input">
-      <textarea id="guestMessage" rows="4" placeholder="Deine Nachricht..." class="form-textarea"></textarea>
-      <button type="submit" class="form-button">Absenden</button>
-    </form>
-    <div id="guestbookEntries" class="mt-6"></div>
-  </section>
+  <header class="mb-12 flex flex-col md:flex-row md:items-center md:justify-between">
+    <div>
+      <h1 class="text-3xl md:text-5xl font-bold glow mb-2">Kapitel 1 – Perfektioniert</h1>
+      <p class="text-cyan-300">Dekodierter Eintrag 1.1–1.4 · Protokollstatus: Offen</p>
+    </div>
+    <nav class="mt-4 md:mt-0 space-x-4 text-sm">
+      <a href="kapitel-0.html" class="text-cyan-500 hover:underline">◀ Kapitel 0</a>
+      <a href="index.html" class="text-cyan-500 hover:underline">Kapitelübersicht</a>
+      <a href="kapitel-2.html" class="text-cyan-500 hover:underline">Kapitel 2 ▶</a>
+      <a href="#buy" class="text-cyan-500 hover:underline">Buch kaufen</a>
+      <a href="#autor" class="text-cyan-500 hover:underline">Über den Autor</a>
+      <a href="#feedback" class="text-cyan-500 hover:underline">Gästebuch</a>
+    </nav>
+  </header>
+
+  <main class="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-cyan-200">
+    <div class="log-entry">
+      <p class="log-label">Log 1.1 – Ankunft</p>
+      <p class="scroll-decode">Der Lander senkte sich mit stabilisierten Schubdüsen auf die vorgesehene Koordinate. Die Oberfläche der Mondrückseite war reglos – abgesehen von den langsam wandernden Schatten des Instrumentenkörpers.</p>
+    </div>
+
+    <div class="log-entry">
+      <p class="log-label">Log 1.2 – CORS</p>
+      <p class="scroll-decode">„Werte stabil. Strahlungsniveau unter Schwelle. Sicht auf Eintrittsfenster ist klar“, meldete CORS.</p>
+    </div>
+
+    <div class="log-entry">
+      <p class="log-label">Log 1.3 – Sichtkontakt</p>
+      <p class="scroll-decode">Gruber schaltete die Außenkameras auf manuell. Auf dem zentralen Schirm zeigte sich der erste Blick auf das Objekt, das alle bisherigen Annahmen in Frage stellte. Es war kein Schiff. Kein Bauwerk. Und doch hatte es eine Struktur.</p>
+    </div>
+
+    <div class="log-entry">
+      <p class="log-label">Log 1.4 – Beginn</p>
+      <p class="scroll-decode">Die Aufzeichnung lief. Der erste Satz im Protokoll war geschrieben.</p>
+    </div>
+
+    <div class="menu-console">
+      <label for="kapitelwahl" class="block mb-2 text-sm text-cyan-400">Schnellnavigation:</label>
+      <select id="kapitelwahl" onchange="location = this.value;">
+        <option value="kapitel-1.html" selected>Kapitel 1 – Perfektioniert</option>
+        <option value="kapitel-2.html">Kapitel 2 – Die Öffnung</option>
+        <option value="kapitel-3.html">Kapitel 3 – Fragmente</option>
+        <option value="kapitel-4.html">Kapitel 4 – Konstruktion</option>
+        <option value="kapitel-5.html">Kapitel 5 – Offenbarung</option>
+      </select>
+    </div>
+
+    <section id="buy" class="mt-20 border-t border-cyan-700 pt-10">
+      <h2 class="text-xl font-semibold mb-4 text-cyan-400">📘 Buch kaufen</h2>
+      <p class="mb-4">Das vollständige Buch <strong>„MONDFALL – Protokoll einer Rückkopplung“</strong> ist jetzt erhältlich als gebundene Ausgabe, E-Book und Hörbuch. Tauche tiefer in die dekodierten Archive.</p>
+      <a href="https://www.deinshop.de/mondfall" target="_blank" class="inline-block bg-cyan-500 text-black px-4 py-2 rounded hover:bg-cyan-400 transition">Zum Shop</a>
+    </section>
+
+    <section id="autor" class="mt-16 border-t border-cyan-700 pt-10">
+      <h2 class="text-xl font-semibold mb-4 text-cyan-400">🧬 Über den Autor</h2>
+      <p>Frank Horn schreibt Science-Fiction mit Tiefgang – futuristisch, kritisch, aber immer lesbar. Als diplomierter Technik-Realist mit Hang zu narrativer Komplexität beschäftigt er sich mit den Fragen: Was, wenn wir nicht allein sind? Und was, wenn doch – aber mit uns selbst?</p>
+      <p class="mt-4">„MONDFALL – Protokoll einer Rückkopplung“ ist sein bisher ambitioniertestes Werk – ein Buch über Wiederholung, Entscheidung und die Möglichkeit, dass das Universum längst geantwortet hat. Nur nicht auf uns.</p>
+    </section>
+
+    <section id="feedback" class="mt-16 border-t border-cyan-700 pt-10">
+      <h2 class="text-xl font-semibold mb-4 text-cyan-400">📡 Gästebuch & Rückmeldung</h2>
+      <p class="mb-4">Hinterlasse eine Nachricht, eine Resonanz oder ein Echo. Deine Gedanken zum Buch sind willkommen.</p>
+      <form onsubmit="submitMessage(event)">
+        <input id="guestName" type="text" placeholder="Name oder Rufzeichen" class="form-input">
+        <textarea id="guestMessage" rows="4" placeholder="Deine Nachricht..." class="form-textarea"></textarea>
+        <button type="submit" class="form-button">Absenden</button>
+      </form>
+      <div id="guestbookEntries" class="mt-6"></div>
+    </section>
+  </main>
+
+  <footer class="mt-16 text-center">
+    <a href="index.html" class="text-cyan-500 hover:underline">Zur Kapitelübersicht</a>
+  </footer>
+
   <script>
     function submitMessage(event) {
       event.preventDefault();
       const name = document.getElementById('guestName').value.trim();
       const message = document.getElementById('guestMessage').value.trim();
       if (!name || !message) return;
+
       const entry = document.createElement('div');
       entry.className = 'entry';
       entry.innerHTML = `<p><strong>${name}</strong> schreibt:</p><p>${message}</p>`;
       document.getElementById('guestbookEntries').prepend(entry);
+
       saveEntry(name, message);
+
       document.getElementById('guestName').value = '';
       document.getElementById('guestMessage').value = '';
     }
+
     function saveEntry(name, message) {
       const entries = JSON.parse(localStorage.getItem('mondfall_guestbook') || '[]');
       entries.unshift({ name, message });
       localStorage.setItem('mondfall_guestbook', JSON.stringify(entries));
     }
+
     function loadEntries() {
       const entries = JSON.parse(localStorage.getItem('mondfall_guestbook') || '[]');
       const container = document.getElementById('guestbookEntries');
@@ -117,6 +186,7 @@
         container.appendChild(div);
       });
     }
+
     window.onload = loadEntries;
   </script>
 </body>
