@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapitel 1 – Perfektioniert | MONDFALL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+    }
+    .glow {
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    }
+    .scroll-decode {
+      position: relative;
+      animation: flicker 4s infinite;
+    }
+    @keyframes flicker {
+      0% { opacity: 1; }
+      2% { opacity: 0.8; }
+      4% { opacity: 1; }
+      6% { opacity: 0.5; }
+      8% { opacity: 1; }
+      10% { opacity: 0.75; }
+      12% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    .log-entry {
+      border-left: 2px solid #00ffff;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    .log-label {
+      color: #00ffaa;
+      font-size: 0.875rem;
+    }
+    .menu-console {
+      background-color: #001010;
+      border: 1px solid #00ffff;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .menu-console select {
+      background: #000;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      padding: 0.5rem;
+      font-family: monospace;
+    }
+    .form-input, .form-textarea {
+      background-color: #000;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .form-button {
+      background-color: #00ffff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+    }
+    .form-button:hover {
+      background-color: #00cccc;
+    }
+    .entry {
+      border-left: 2px dashed #00ffff;
+      margin-top: 1rem;
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen px-6 py-10 md:px-24 md:py-16">
+  <h1 class="text-3xl font-bold glow mb-4">Kapitel 1 – Perfektioniert</h1>
+  <p class="text-cyan-300 mb-8">Dies ist ein Beispielkapitel aus MONDFALL. Interaktive Inhalte und ein lokales Gästebuch sind enthalten.</p>
+  <section id="feedback">
+    <h2 class="text-xl font-semibold mb-4 text-cyan-400">📡 Gästebuch & Rückmeldung</h2>
+    <form onsubmit="submitMessage(event)">
+      <input id="guestName" type="text" placeholder="Name oder Rufzeichen" class="form-input">
+      <textarea id="guestMessage" rows="4" placeholder="Deine Nachricht..." class="form-textarea"></textarea>
+      <button type="submit" class="form-button">Absenden</button>
+    </form>
+    <div id="guestbookEntries" class="mt-6"></div>
+  </section>
+  <script>
+    function submitMessage(event) {
+      event.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const message = document.getElementById('guestMessage').value.trim();
+      if (!name || !message) return;
+      const entry = document.createElement('div');
+      entry.className = 'entry';
+      entry.innerHTML = `<p><strong>${name}</strong> schreibt:</p><p>${message}</p>`;
+      document.getElementById('guestbookEntries').prepend(entry);
+      saveEntry(name, message);
+      document.getElementById('guestName').value = '';
+      document.getElementById('guestMessage').value = '';
+    }
+    function saveEntry(name, message) {
+      const entries = JSON.parse(localStorage.getItem('mondfall_guestbook') || '[]');
+      entries.unshift({ name, message });
+      localStorage.setItem('mondfall_guestbook', JSON.stringify(entries));
+    }
+    function loadEntries() {
+      const entries = JSON.parse(localStorage.getItem('mondfall_guestbook') || '[]');
+      const container = document.getElementById('guestbookEntries');
+      container.innerHTML = '';
+      entries.forEach(({ name, message }) => {
+        const div = document.createElement('div');
+        div.className = 'entry';
+        div.innerHTML = `<p><strong>${name}</strong> schreibt:</p><p>${message}</p>`;
+        container.appendChild(div);
+      });
+    }
+    window.onload = loadEntries;
+  </script>
+</body>
+</html>
